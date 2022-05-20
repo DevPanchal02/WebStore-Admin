@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
+
+.root{
+    -fx-background-color: #212840;
+}
+.label{
+    -fx-font-family: 'Raleway', sans-serif;
+}
+.tf_box{
+    -fx-background-color: "transparent";
+    -fx-border-color: "white";
+    -fx-text-fill: "white";
+}
+.button{
+    -fx-background-color: #a0aed0;
+    -fx-border-color: "white";
+    -fx-font-family: 'Raleway', sans-serif;
+    -fx-font-size: 12;
+}
