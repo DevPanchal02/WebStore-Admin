@@ -7,9 +7,9 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="489.0" stylesheets="@CSS/Login.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.alpstore.HelloController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="585.0" prefWidth="489.0" styleClass="a" stylesheets="@../CSS/Login.css" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="project.alpstore.LoginController">
    <children>
-      <Label alignment="CENTER" layoutX="13.0" layoutY="134.0" prefHeight="44.0" prefWidth="159.0" text="Employee Login" textFill="#a0aed0">
+      <Label alignment="CENTER" layoutX="13.0" layoutY="134.0" prefHeight="44.0" prefWidth="159.0" styleClass="title" text="Employee Login" textFill="#a0aed0">
          <font>
             <Font size="22.0" />
          </font>
@@ -22,5 +22,6 @@
             <Font size="17.0" />
          </font>
       </Label>
+      <Button fx:id="registerButton" layoutX="190.0" layoutY="437.0" mnemonicParsing="false" onAction="#onRegistrationButtonCLick" prefHeight="36.0" prefWidth="109.0" style="-fx-background-color: transparent; -fx-border-color: #a0aed0;" text="Register" textFill="#a0aed0" />
    </children>
 </AnchorPane>

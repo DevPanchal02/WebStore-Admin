@@ -1,16 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@300&display=swap');
 
-.root{
+.root {
     -fx-background-color: #212840;
 }
 .label{
     -fx-font-family: 'Raleway', sans-serif;
-}
-.tf_box{
-    -fx-background-color: "transparent";
-    -fx-border-color: "white";
-    -fx-text-fill: "white";
-    -fx-prompt-text-fill: white;
 }
 .button{
     -fx-background-color: #a0aed0;
@@ -20,13 +14,28 @@
 }
 .title{
     -fx-font-size: 22;
-}
 
+}
 .combo-box{
     -fx-background-color: transparent;
     -fx-border-color: white;
 }
-.combo-box .label{
+.combo-box  .list-cell{
+    -fx-background-color: transparent;
     -fx-text-fill: white;
+}
+.combo-box .combo-box-popup .list-view{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+}
+.combo-box .combo-box-popup .list-cell:hover{
+    -fx-background-color: #a0aed0;
+    -fx-text-fill: black;
+}
+.text-field{
+    -fx-background-color: transparent;
+    -fx-border-color: white;
+    -fx-font-family: 'Raleway', sans-serif;
     -fx-prompt-text-fill: white;
+    -fx-text-fill: white;
 }
