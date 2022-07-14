@@ -24,8 +24,9 @@
          </styleClass></Button>
       <TextField fx:id="regLastName" layoutX="245.0" layoutY="123.0" prefHeight="36.0" prefWidth="180.0" promptText="Last Name" styleClass="tf_box" />
       <TextField fx:id="regPhone" layoutX="34.0" layoutY="184.0" prefHeight="36.0" prefWidth="387.0" promptText="Phone Number" styleClass="tf_box" />
-      <TextField fx:id="regUsername" layoutX="34.0" layoutY="250.0" prefHeight="36.0" prefWidth="387.0" promptText="User Name" styleClass="tf_box" />
+      <TextField fx:id="regUsername" layoutX="34.0" layoutY="250.0" prefHeight="36.0" prefWidth="387.0" promptText="Username" styleClass="tf_box" />
       <PasswordField fx:id="regPassword" layoutX="34.0" layoutY="317.0" prefHeight="36.0" prefWidth="387.0" promptText="Password" styleClass="tf_box" />
-      <ComboBox fx:id="departments" layoutX="34.0" layoutY="384.0" prefHeight="23.0" prefWidth="225.0" promptText="Department" />
+      <ComboBox fx:id="regDepartments" layoutX="34.0" layoutY="384.0" prefHeight="23.0" prefWidth="225.0" promptText="Department" />
+      <Label fx:id="regError" alignment="CENTER" focusTraversable="false" layoutX="34.0" layoutY="435.0" prefHeight="36.0" prefWidth="387.0" styleClass="label-error" text="Error" textFill="WHITE" visible="false" />
    </children>
 </AnchorPane>

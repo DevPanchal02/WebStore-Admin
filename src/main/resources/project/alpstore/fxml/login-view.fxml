@@ -17,7 +17,7 @@
       <TextField fx:id="txtUsername" layoutX="13.0" layoutY="228.0" prefHeight="36.0" prefWidth="464.0" promptText="Username" styleClass="tf_box" />
       <Button fx:id="nextButton" layoutX="13.0" layoutY="437.0" mnemonicParsing="false" onAction="#onNextButtonClick" prefHeight="36.0" prefWidth="159.0" text="Next" />
       <PasswordField fx:id="txtPassword" layoutX="13.0" layoutY="293.0" prefHeight="36.0" prefWidth="464.0" promptText="Password" styleClass="tf_box" />
-      <Label fx:id="errorMsg" alignment="CENTER" layoutX="11.0" layoutY="357.0" prefHeight="44.0" prefWidth="464.0" text="Error" textAlignment="JUSTIFY" textFill="WHITE" visible="false">
+      <Label fx:id="loginError" alignment="CENTER" layoutX="11.0" layoutY="357.0" prefHeight="44.0" prefWidth="464.0" text="Error" textAlignment="JUSTIFY" textFill="WHITE" visible="false">
          <font>
             <Font size="17.0" />
          </font>

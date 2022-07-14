@@ -39,3 +39,7 @@
     -fx-prompt-text-fill: white;
     -fx-text-fill: white;
 }
+.label-error {
+    -fx-text-fill: white;
+    -fx-font-size: 17;
+}

@@ -3,6 +3,7 @@ package project.alpstore;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
@@ -12,7 +13,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-public class LoginController {
+public class LoginController implements Initializable{
 
     //JavaFX Variables for each element in the login page
     @FXML
@@ -22,7 +23,9 @@ public class LoginController {
     @FXML
     private PasswordField txtPassword;
     @FXML
-    private Label errorMsg;
+    private Label loginError;
+
+    public static Label loginErrMsg;
 
 
     //onNextButtonClick method to validate the users Credentials
@@ -32,11 +35,12 @@ public class LoginController {
         //checks if both username and password fields are not left
         // empty fields result in an error
         if (txtUsername.getText().isBlank() == true || txtPassword.getText().isBlank() == true){
-            errorMsg.setText("Please Enter Credentials for both Fields");
-            errorMsg.setVisible(true);
+            loginError.setText("Please Enter Credentials for all Fields");
+            loginError.setVisible(true);
         }
         else {
-            ((Stage) nextButton.getScene().getWindow()).close();
+            //((Stage) nextButton.getScene().getWindow()).close();
+            DBUtils.loginUser(txtUsername.getText(),txtPassword.getText());
 
         }
     }
@@ -57,5 +61,9 @@ public class LoginController {
         stage.setScene(registerScene);
         stage.show();
 
+    }
+    //initialize method to run at the start
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loginErrMsg = loginError;
     }
 }

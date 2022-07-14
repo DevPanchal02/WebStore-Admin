@@ -2,21 +2,22 @@ package project.alpstore;
 import java.io.IOException;
 import java.net.URL;
 import java.util.*;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
 
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
-import java.sql.*;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 
 public class RegisterController implements Initializable {
 
+    //Javafx variables initialized
     @FXML
-    private ComboBox<String> departments;
+    private ComboBox<String> regDepartments;
     @FXML
     private TextField regFirstName;
     @FXML
@@ -29,37 +30,30 @@ public class RegisterController implements Initializable {
     private TextField regUsername;
     @FXML
     private PasswordField regPassword;
+    @FXML
+    private Label regError;
+    public static Label errorMsg;
 
-    public static void signUp(ActionEvent event, String regFirstName, String regLastName, String regPhone, String regUsername, String regPassword, ComboBox<String> departments){
-        Connection connection = null;
-        PreparedStatement psInsert = null;
-        PreparedStatement psCheckUserExists = null;
-        ResultSet resultSet = null;
-
-        try{
-            connection = DriverManager.getConnection("#DataSourceSettings#\n" +
-                    "#LocalDataSource: @localhost\n" +
-                    "#BEGIN#\n" +
-                    "<data-source source=\"LOCAL\" name=\"@localhost\" uuid=\"0007bf6e-3f89-4238-8ff2-e652882a09e8\"><database-info product=\"MySQL\" version=\"8.0.29\" jdbc-version=\"4.2\" driver-name=\"MySQL Connector/J\" driver-version=\"mysql-connector-java-8.0.25 (Revision: 08be9e9b4cba6aa115f9b27b215887af40b159e0)\" dbms=\"MYSQL\" exact-version=\"8.0.29\" exact-driver-version=\"8.0\"><extra-name-characters>#@</extra-name-characters><identifier-quote-string>`</identifier-quote-string></database-info><case-sensitivity plain-identifiers=\"lower\" quoted-identifiers=\"lower\"/><driver-ref>mysql.8</driver-ref><synchronize>true</synchronize><jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver><jdbc-url>jdbc:mysql://localhost:3306</jdbc-url><secret-storage>master_key</secret-storage><user-name>root</user-name><schema-mapping><introspection-scope><node kind=\"schema\" qname=\"@\"/></introspection-scope></schema-mapping><working-dir>$ProjectFileDir$</working-dir></data-source>\n" +
-                    "#END#\n" +
-                    "\n");
-            psCheckUserExists = connection.prepareStatement("SELECT * FROM users WHERE regUsername = ? ");
-
-
+    //initialize method that runs at the start
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        regDepartments.setItems(FXCollections.observableArrayList("Product Management", "Customer Support", "Human Resources"));
+        errorMsg = regError;
+    }
+    //onNextButtonClick method that runs when the next button is clicked
+    public void onNextButtonClick(ActionEvent actionEvent){
+        //Checks if any fields are left blank and gives an error if there are blank fields
+        if (regFirstName.getText().isBlank() || regLastName.getText().isBlank() || regPhone.getText().isBlank() || regUsername.getText().isBlank() || regPassword.getText().isBlank() || regDepartments.getSelectionModel().isEmpty()) {
+            regError.setText("Please Enter Credentials for all Fields");
+            regError.setVisible(true);
+            regDepartments.addEventHandler(ComboBox.ON_SHOWN, event -> regError.setVisible(false));
         }
-        catch(SQLException e) {
-            System.out.println("Error");
+        //Attempts to register user
+        else {
+            System.out.println("working");
+            regError.setVisible(false);
+            //Calls the DBUtils class where user registration is processed
+            DBUtils.signupUser(regUsername.getText(), regPassword.getText(), regFirstName.getText(), regLastName.getText(), regPhone.getText(), regDepartments.getSelectionModel().getSelectedItem());
         }
-
     }
-
-
-
-    public void initialize(URL url, ResourceBundle resourceBundle){
-        departments.setItems(FXCollections.observableArrayList("Product Management", "Customer Support", "Human Resources"));
-    }
-
-    public void onNextButtonClick(ActionEvent actionEvent) {
-    }
-
 }
+
